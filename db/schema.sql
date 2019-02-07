@@ -1,15 +1,3 @@
--- ---
--- Globals
--- ---
-
--- SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
--- SET FOREIGN_KEY_CHECKS=0;
-
--- ---
--- Table 'merch'
--- 
--- ---
-
 DROP TABLE IF EXISTS `merch`;
 		
 CREATE TABLE `merch` (
@@ -21,21 +9,3 @@ CREATE TABLE `merch` (
   `imageUrl` VARCHAR(255) NULL DEFAULT NULL,
   `prime` INTEGER(1) NULL DEFAULT NULL
 );
-
--- ---
--- Foreign Keys 
--- ---
-
-
--- ---
--- Table Properties
--- ---
-
--- ALTER TABLE `merch` ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ---
--- Test Data
--- ---
-
--- INSERT INTO `merch` (`id`,`name`,`stars`,`reviews`,`price`,`imageUrl`,`prime`) VALUES
--- ('','','','','','','');

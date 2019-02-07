@@ -11,17 +11,6 @@ let db = new sqlite.Database(path.join(__dirname, "./products.db"), (err)=>{
     }
 });
 
-// db.run(`INSERT INTO merch(name, stars, reviews, price, imageUrl, prime) VALUES(?, ?, ?, ?, ?, ?)`,
-// ['Black Pants', 4.5, 1337, "$41.99", 'https://images-na.ssl-images-amazon.com/images/I/31VU-ryYsML._AC_UL260_SR200,260_.jpg', 0], function(err) {
-//     if (err) {
-//       return console.log("ERROR after insertion attempt: "+err);
-//     }
-//     // get the last insert id
-//     console.log(`A row has been inserted with rowid ${this.lastID}`);
-// });
-
-//var vals = ['Brown Pants', 4.5, 1337, "$41.99", 'https://images-na.ssl-images-amazon.com/images/I/31VU-ryYsML._AC_UL260_SR200,260_.jpg', 0]
-
 function randomVal(){
     var vals = [];
     vals[0] = faker.commerce.productName();
@@ -39,8 +28,6 @@ function addRow(vals){
         if (err) {
             return console.log("ERROR after insertion attempt: "+err);
           }
-          // get the last insert id
-          //console.log(`A row has been inserted with rowid ${this.lastID}`);
     });
 }
 
@@ -50,3 +37,4 @@ function seedData(n){
     }
 }
 
+module.exports = db;
