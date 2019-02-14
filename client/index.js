@@ -8,10 +8,9 @@ class App extends React.Component{
     }
     render(){
         return(
-        <div>rendered via react</div>
+        <div>rendered via React</div>
         );
     }
 }
-// document.getElementById('app').innerText('hai');
-// window.alert('ping');
+
 ReactDOM.render(<App />, document.getElementById('app'));
