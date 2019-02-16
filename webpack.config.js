@@ -5,7 +5,7 @@ const PORT = 8000;
 
 module.exports = {
   mode: 'development',
-  entry: [`${SRC_DIR}/index.js`],
+  entry: [`${SRC_DIR}/index.jsx`],
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, './client/dist'), // output directory for main bundle file

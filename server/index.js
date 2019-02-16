@@ -7,6 +7,7 @@ var controllers = require('./controllers');
 // var page = require('../client/dist/index.html');
 var app = express();
 
+
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(function(req, res, next) {
