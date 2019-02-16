@@ -10,12 +10,18 @@ class Tile extends React.Component {
     }
 
     render(){
+        var starBar = '';
+        for(var i = 1; i <= this.props.thing.stars; i++){
+            starBar += '★';
+        }
+        //this.setState({starBar : starBar});
         return(
         <div className='tile' width='333px'>
-            <div><img src={'http://img3.wikia.nocookie.net/__cb20131224023258/pokemon/images/7/79/063Abra_OS_anime_2.png'/*this.props.thing[0].imageUrl*/} width='100px' hight='100px' /></div>
-            <div>{this.props.thing[0].name}</div>
-            <div>{this.props.thing[0].stars} stars</div>
-            <div><span>${this.props.thing[0].price}</span><span>{(this.props.thing[0].prime) ? "":"  prime"}</span></div>
+            <div><img src={this.props.thing.imageUrl} width='200px' hight='300px' /></div>
+            <div>{this.props.thing.name}</div>
+            <div className='stars'>{starBar}   {this.props.thing.stars}</div>
+            <div><span>${this.props.thing.price}</span><span>{(this.props.thing.prime) ? ""
+            :(<span className='isPrime'> <span className='primeTick'>✔</span><span className='primeWord'>prime</span> </span>)}</span></div>
         </div>)
     }
 }

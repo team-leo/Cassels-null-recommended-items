@@ -33,8 +33,9 @@ class App extends React.Component{
     render(){
         return(
         <div id='main'>
-            <Tile thing={this.state.things}/>
-            {this.makeTile(this.state.things)}
+            <Row things={this.state.things}/>
+            <Tile thing={this.state.things[0]}/>
+            {/* {this.makeTile(this.state.things)} */}
         </div>
         );
     }
