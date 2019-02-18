@@ -16,7 +16,7 @@ class Tile extends React.Component {
         }
         //this.setState({starBar : starBar});
         return(
-        <div className='tile' width='333px'>
+        <div className='tile' width='320px'>
             <div><img src={this.props.thing.imageUrl} width='200px' hight='300px' /></div>
             <div>{this.props.thing.name}</div>
             <div className='stars'>{starBar}   {this.props.thing.stars}</div>
