@@ -17,9 +17,28 @@ function randomVal(){
     vals[1] = Math.floor((Math.random()*10))/2;
     vals[2] = Math.floor((Math.random()*Math.random()*10000));
     vals[3] = faker.commerce.price()+"";
-    vals[4] = faker.image.imageUrl();
+    //vals[4] = faker.image.imageUrl();
+    vals[4] = randomImg();
     vals[5] = Math.round(Math.random());
     return vals
+}
+
+var imgLinks = [
+    "https://drive.google.com/file/d/1X9f8NovT68ABI2aQg5L5KnBG7Cw3kJm2/preview",
+    "https://drive.google.com/file/d/1-fV_MpqcTUOXBFy_tDPn7PH9mPPaXk6p/preview",
+    "https://drive.google.com/file/d/1jrthgaxzc836jqk1TlHc_Zmx0QD-AkoX/preview",
+    "https://drive.google.com/file/d/1PUvKjhsHS06wRZZx2XTHsgZG8_X0fMtY/preview",
+    "https://drive.google.com/file/d/1N6g_Xgvqw6REAF2qpxvBmDmhm-eIFBZT/preview",
+    "https://drive.google.com/file/d/1CMuCz5LVSp0tgqGaLFwvTlYg1YQ8tScS/preview",
+    "https://drive.google.com/file/d/1PHu-vnK23ZN6ifAK95j83yIlCj0jCXH5/preview",
+    "https://drive.google.com/file/d/1x3z-oEsK-GCR5XXeLNb89qpwdubm8K3O/preview",
+    "https://drive.google.com/file/d/1xnjP6VZoC2ql3D9WVAPL1MRpOTk-ngQE/preview",
+    "https://drive.google.com/file/d/1L1rZvp7MrBwH3oyDRja36rmS-UNfLu8N/preview"
+];
+
+function randomImg () {
+    console.log(Math.floor((imgLinks.length) * Math.random() ));
+    return( imgLinks[(Math.floor((imgLinks.length) * Math.random() ))]);
 }
 
 function addRow(vals){
