@@ -7,7 +7,7 @@ let db = new sqlite.Database(path.join(__dirname, "./products.db"), (err)=>{
         console.log("ERROR in db/index.js when connecting: "+err);
     } else {
         console.log("connected to SQLite database");
-        seedData(100);
+        seedData(400);
     }
 });
 
