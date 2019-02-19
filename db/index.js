@@ -37,7 +37,7 @@ var imgLinks = [
 ];
 
 function randomImg () {
-    console.log(Math.floor((imgLinks.length) * Math.random() ));
+    //console.log(Math.floor((imgLinks.length) * Math.random() ));
     return( imgLinks[(Math.floor((imgLinks.length) * Math.random() ))]);
 }
 

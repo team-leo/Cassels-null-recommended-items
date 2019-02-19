@@ -5,6 +5,7 @@ import parser from 'body-parser';
 
 import Tile from './src/components/tile';
 import Row from './src/components/row';
+import TitleBar from './src/components/titleBar';
 
 class App extends React.Component{
     constructor(props){
@@ -25,6 +26,7 @@ class App extends React.Component{
         // this.makeRow = this.makeRow.bind(this);
         this.update = this.update.bind(this);
         this.changePage = this.changePage.bind(this);
+        this.resize = this.resize.bind(this);
     }
 
     componentDidMount(){
@@ -34,13 +36,19 @@ class App extends React.Component{
         // }, 5000);
     }
 
+    resize(){
+        this.setState({tilesPerRow : Math.floor((window.innerWidth -28)/ 154)});
+    }
+
     render(){
+        window.onresize = this.resize;
         return(
         <div id='main'>
-        <span>window width: {window.innerWidth}      |      </span>
-        <span>{this.state.rowName}      |      </span>
+        {/* <span>window width: {window.innerWidth} | </span>
+        <span>{this.state.rowName} | </span>
         <span>page {Math.ceil((this.state.currentPage + 0.01)/(this.state.tilesPerRow))} of {Math.ceil(this.state.things.length / this.state.tilesPerRow)}</span>
-        <br/><button onClick={()=>{this.changePage(1)}}>scroll forward</button>
+        <br/><button onClick={()=>{this.changePage(1)}}>scroll forward</button> */}
+            <TitleBar changePage={this.changePage} rowName={this.state.rowName} currentPage={this.state.currentPage} tilesPerRow={this.state.tilesPerRow} thingCount={this.state.things.length} />{/*window resize stuff.*/}
             <Row things={this.state.things}  page={this.state.currentPage}/>
             {/* <Tile thing={this.state.things[0]}/> */}
             {/* {this.makeTile(this.state.things)} */}
