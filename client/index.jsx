@@ -19,7 +19,7 @@ class App extends React.Component{
                 stars: 4}],
             rowName : (this.props.rowName || "Related Items"),
             currentPage : 0,
-            tilesPerRow : Math.floor((window.innerWidth -28)/ 204)
+            tilesPerRow : Math.floor((window.innerWidth -28)/ 154)
         };
         // this.makeTile = this.makeTile.bind(this);
         // this.makeRow = this.makeRow.bind(this);
