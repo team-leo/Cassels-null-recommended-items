@@ -19,10 +19,10 @@ class App extends React.Component{
                 stars: 4}],
             rowName : (this.props.rowName || "Related Items"),
             currentPage : 0,
-            tilesPerRow : ((window.innerWidth -28)/ 204)
+            tilesPerRow : Math.floor((window.innerWidth -28)/ 204)
         };
-        this.makeTile = this.makeTile.bind(this);
-        this.makeRow = this.makeRow.bind(this);
+        // this.makeTile = this.makeTile.bind(this);
+        // this.makeRow = this.makeRow.bind(this);
         this.update = this.update.bind(this);
         this.changePage = this.changePage.bind(this);
     }
@@ -37,9 +37,10 @@ class App extends React.Component{
     render(){
         return(
         <div id='main'>
-        <span>window width: {window.innerWidth}   </span>
-        <span>{this.state.rowName}</span>
-        <button onClick={()=>{this.changePage(1)}}>scroll forward</button>
+        <span>window width: {window.innerWidth}      |      </span>
+        <span>{this.state.rowName}      |      </span>
+        <span>page {Math.ceil((this.state.currentPage + 0.01)/(this.state.tilesPerRow))} of {Math.ceil(this.state.things.length / this.state.tilesPerRow)}</span>
+        <br/><button onClick={()=>{this.changePage(1)}}>scroll forward</button>
             <Row things={this.state.things}  page={this.state.currentPage}/>
             {/* <Tile thing={this.state.things[0]}/> */}
             {/* {this.makeTile(this.state.things)} */}
@@ -47,21 +48,23 @@ class App extends React.Component{
         );
     }
 
-    makeRow(thing){
-        return(<Row things={this.state.things} page={this.state.currentPage}/>)
-    }
+    // makeRow(thing){
+    //     return(<Row things={this.state.things} page={this.state.currentPage}/>)
+    // }
 
-    makeTile(thing){
-        return(<Tile thing={thing}/>)
-    }
+    // makeTile(thing){
+    //     return(<Tile thing={thing}/>)
+    // }
 
     changePage(change){
-        if((this.state.currentPage + change) > 0){
+        if(((this.state.currentPage + change) > 0) && (this.state.currentPage < (this.state.things.length  - (this.state.tilesPerRow) ))){
             // var newPage = (this.state.currentPage + change);
             // console.log('scrolling to '+ newPage +'was attempted');
-            if((this.state.currentPage + change) > this.state.things.length){
+            if((this.state.currentPage + change) > (this.state.things.length - 1)){
+                // if(this.state.currentPage >= this.state.things.length -1){
+                // }
                 this.setState({currentPage : (this.state.things.length - (this.state.tilesPerRow))});
-            }else{
+            } else{
                 this.setState({currentPage : (this.state.currentPage + (change*this.state.tilesPerRow))});
             }
         } else {
