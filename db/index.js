@@ -14,7 +14,7 @@ let db = new sqlite.Database(path.join(__dirname, "./products.db"), (err)=>{
 function randomVal(){
     var vals = [];
     vals[0] = faker.commerce.productName();
-    vals[1] = Math.floor((Math.random()*10))/2;
+    vals[1] = Math.ceil((Math.random()*10))/2;
     vals[2] = Math.floor((Math.random()*Math.random()*10000));
     vals[3] = faker.commerce.price()+"";
     //vals[4] = faker.image.imageUrl();
