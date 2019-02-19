@@ -7,13 +7,14 @@ class Row extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            things : props.things
+            things : props.things//,
+            //page : (props.page || 1)
         };
     }
 
     render(){
         var tilesPerRow = ((window.innerWidth -28)/ 204);
-        var onScrn = this.props.things.slice(0,tilesPerRow);
+        var onScrn = this.props.things.slice(this.props.page, this.props.page+tilesPerRow);
         return(
         <div className='row'>
             {/* <Tile thing={this.props.things[0]}/> */}
