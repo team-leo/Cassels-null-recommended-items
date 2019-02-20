@@ -8,4 +8,12 @@ function fetchItems(req, res){
     models.fetchItems(reply);
 }
 
+function fetchBundle(req, res){
+    var reply = function(output){
+        res.sendFile(output);
+    }
+    models.fetchBundle(reply);
+}
+
 module.exports.fetchItems = fetchItems;
+module.exports.fetchBundle = fetchBundle;

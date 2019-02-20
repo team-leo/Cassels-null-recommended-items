@@ -19,6 +19,7 @@ app.use(function(req, res, next) {
 //app.use(express.static('../client/src/index.html'));
 // app.get('/y', require('../client/dist/index.html'));
 
+app.get('/api/recs', controllers.fetchBundle)
 app.get('/t', controllers.fetchItems);
 
 app.listen(3000, ()=>{

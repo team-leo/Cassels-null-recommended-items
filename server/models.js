@@ -17,4 +17,10 @@ function fetchItems(cb){
     }, ()=>{cb(output)});
 }
 
+function fetchBundle(cb){
+    // var bundle = require('../client/dist/bundle.js');
+    return cb(path.resolve(__dirname,'../client/dist/bundle.js'));
+}
+
 module.exports.fetchItems = fetchItems;
+module.exports.fetchBundle = fetchBundle;
