@@ -83,7 +83,7 @@ class App extends React.Component{
     }
 
     update(){
-        axios.get('http://ec2-3-91-242-160.compute-1.amazonaws.com/:3000/t')
+        axios.get('http://ec2-3-91-242-160.compute-1.amazonaws.com:3000/t')
         .then((result)=>{
             console.log(result.data);
             this.setState({things : result.data})
