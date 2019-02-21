@@ -1,0 +1,73 @@
+div {
+    color: rgb(7, 7, 14);
+}
+
+#app {
+    /* background-color: whitesmoke; */
+}
+
+/* Row Component */
+.row {
+    border-style: ridge;
+    border-width: 3px;
+    border-color: blanchedalmond;
+    background-color: whitesmoke;
+    height: 230px;
+}
+
+/* Tile Component */
+.tile {
+    border-style: solid;
+    border-width: 2px;
+    /* border-color: rgb(51, 25, 3); */
+    border-color: whitesmoke;
+    width: 150px;
+    /* min-height: 21 */
+    height: 226px;
+
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+
+    float: left;
+}
+
+.isPrime {
+    font-size: 60%;
+}
+
+.primeTick {
+    /* font-size: 60%; */
+    color: #ffbb00;
+}
+
+.primeWord {
+    /* font-size: 60%; */
+    color: dodgerblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.recPrice {
+    font-size: 70%;
+}
+
+.stars {
+    color: #ffbb00;
+    font-size: 100%;
+}
+
+.recName {
+    /* height: 34px; */
+    margin: 0px;
+    font-size: 80%;
+    color: blue;
+}
+.recName:hover {
+    text-decoration: underline;
+}
+
+.recImage {
+    /* width: 190px; */
+    border-style: none;
+    margin: 0px;
+    background-color: whitesmoke;
+}
