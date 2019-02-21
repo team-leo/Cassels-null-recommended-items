@@ -6,6 +6,7 @@ import parser from 'body-parser';
 import Tile from './src/components/tile';
 import Row from './src/components/row';
 import TitleBar from './src/components/titleBar';
+import './dist/style.css';
 
 class App extends React.Component{
     constructor(props){
