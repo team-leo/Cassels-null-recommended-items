@@ -68,6 +68,8 @@ class App extends React.Component{
     // }
 
     changePage(change){
+        var srch = new URLSearchParams(window.location.search);
+        console.log(srch.get('id'));
         if(((this.state.currentPage + change) > 0) && (this.state.currentPage < (this.state.things.length  - (this.state.tilesPerRow) ))){
             // var newPage = (this.state.currentPage + change);
             // console.log('scrolling to '+ newPage +'was attempted');
@@ -85,7 +87,8 @@ class App extends React.Component{
     }
 
     update(){
-        axios.get('http://ec2-3-91-242-160.compute-1.amazonaws.com:3000/t')
+        console.log('requesting data for id: ' + this.props.id);
+        axios.get('http://ec2-3-91-242-160.compute-1.amazonaws.com:3000/t?id=' + (this.props.id || 0))
         .then((result)=>{
             console.log(result.data);
             this.setState({things : result.data})
@@ -98,4 +101,13 @@ class App extends React.Component{
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('recs'));
+function getItemId(){
+    var srch = new URLSearchParams(window.location.search);
+    return srch.get('id')}
+
+
+ReactDOM.render(<App id={getItemId()}
+    // {(()=>{
+    // var srch = new URLSearchParams(window.location.search);
+    // return 3;})}
+/>, document.getElementById('recs'));
