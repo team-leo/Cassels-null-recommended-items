@@ -5,7 +5,8 @@ function fetchItems(req, res){
     var reply = function(output){
         res.send(output);
     }
-    models.fetchItems(reply);
+    // console.log(req.query);
+    models.fetchItems(reply, req.query.id);
 }
 
 function fetchBundle(req, res){
