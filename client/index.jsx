@@ -52,7 +52,7 @@ class App extends React.Component{
         <span>page {Math.ceil((this.state.currentPage + 0.01)/(this.state.tilesPerRow))} of {Math.ceil(this.state.things.length / this.state.tilesPerRow)}</span>
         <br/><button onClick={()=>{this.changePage(1)}}>scroll forward</button> */}
             <TitleBar changePage={this.changePage} rowName={this.state.rowName} currentPage={this.state.currentPage} tilesPerRow={this.state.tilesPerRow} thingCount={this.state.things.length} />{/*window resize stuff.*/}
-            <Row things={this.state.things}  page={this.state.currentPage}/>
+            <Row things={this.state.things}  page={this.state.currentPage} tilesPerRow={this.props.tilesPerRow}/>
             {/* <Tile thing={this.state.things[0]}/> */}
             {/* {this.makeTile(this.state.things)} */}
         </div>
