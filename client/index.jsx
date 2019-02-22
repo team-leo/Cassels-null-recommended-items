@@ -21,7 +21,8 @@ class App extends React.Component{
                 stars: 4}],
             rowName : (this.props.rowName || "Related Items"),
             currentPage : 0,
-            tilesPerRow : Math.floor((window.innerWidth -28)/ 154)
+            // tilesPerRow : Math.floor((window.innerWidth -28)/ 154)
+            tilesPerRow : document.getElementById('recs').offsetWidth / 154
         };
         // this.makeTile = this.makeTile.bind(this);
         // this.makeRow = this.makeRow.bind(this);
@@ -32,6 +33,7 @@ class App extends React.Component{
 
     componentDidMount(){
         this.update();
+        //window.alert(document.getElementById('recs').offsetWidth);
         // setInterval(() => {
         //     this.update()
         // }, 5000);
