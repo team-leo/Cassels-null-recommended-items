@@ -22,7 +22,7 @@ class App extends React.Component{
             rowName : (this.props.rowName || "Related Items"),
             currentPage : 0,
             // tilesPerRow : Math.floor((window.innerWidth -28)/ 154)
-            tilesPerRow : document.getElementById('recs').offsetWidth / 154
+            tilesPerRow : (document.getElementById('recs').offsetWidth - 8) / 154
         };
         this.update = this.update.bind(this);
         this.changePage = this.changePage.bind(this);
@@ -31,11 +31,11 @@ class App extends React.Component{
 
     componentDidMount(){
         this.update();//update state.things with recomendations from database
+        this.resize();
     }
 
     resize(){//adjust the number of recomendations shown bassed on the width avalible
-        this.setState({tilesPerRow : Math.floor(document.getElementById('recs').offsetWidth / 154)});
-        this.resize();
+        this.setState({tilesPerRow : Math.floor((document.getElementById('recs').offsetWidth - 8) / 154)});
     }
 
     render(){
