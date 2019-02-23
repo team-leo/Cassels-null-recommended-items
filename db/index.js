@@ -24,16 +24,23 @@ function randomVal(){
 }
 
 var imgLinks = [
-    "https://drive.google.com/file/d/1X9f8NovT68ABI2aQg5L5KnBG7Cw3kJm2/preview",
-    "https://drive.google.com/file/d/1-fV_MpqcTUOXBFy_tDPn7PH9mPPaXk6p/preview",
-    "https://drive.google.com/file/d/1jrthgaxzc836jqk1TlHc_Zmx0QD-AkoX/preview",
-    "https://drive.google.com/file/d/1PUvKjhsHS06wRZZx2XTHsgZG8_X0fMtY/preview",
-    "https://drive.google.com/file/d/1N6g_Xgvqw6REAF2qpxvBmDmhm-eIFBZT/preview",
-    "https://drive.google.com/file/d/1CMuCz5LVSp0tgqGaLFwvTlYg1YQ8tScS/preview",
-    "https://drive.google.com/file/d/1PHu-vnK23ZN6ifAK95j83yIlCj0jCXH5/preview",
-    "https://drive.google.com/file/d/1x3z-oEsK-GCR5XXeLNb89qpwdubm8K3O/preview",
-    "https://drive.google.com/file/d/1xnjP6VZoC2ql3D9WVAPL1MRpOTk-ngQE/preview",
-    "https://drive.google.com/file/d/1L1rZvp7MrBwH3oyDRja36rmS-UNfLu8N/preview"
+    "https://drive.google.com/uc?export=view&id=1X9f8NovT68ABI2aQg5L5KnBG7Cw3kJm2",
+    "https://drive.google.com/uc?export=view&id=1-fV_MpqcTUOXBFy_tDPn7PH9mPPaXk6p",
+    "https://drive.google.com/uc?export=view&id=1jrthgaxzc836jqk1TlHc_Zmx0QD-AkoX",
+    "https://drive.google.com/uc?export=view&id=1N6g_Xgvqw6REAF2qpxvBmDmhm-eIFBZT",
+    "https://drive.google.com/uc?export=view&id=1PUvKjhsHS06wRZZx2XTHsgZG8_X0fMtY",
+    "https://drive.google.com/uc?export=view&id=1CMuCz5LVSp0tgqGaLFwvTlYg1YQ8tScS",
+    "https://drive.google.com/uc?export=view&id=1PHu-vnK23ZN6ifAK95j83yIlCj0jCXH5",
+    "https://drive.google.com/uc?export=view&id=1x3z-oEsK-GCR5XXeLNb89qpwdubm8K3O",
+    "https://drive.google.com/uc?export=view&id=1xnjP6VZoC2ql3D9WVAPL1MRpOTk-ngQE",
+    "https://drive.google.com/uc?export=view&id=1L1rZvp7MrBwH3oyDRja36rmS-UNfLu8N"
+    // "https://drive.google.com/file/d/1N6g_Xgvqw6REAF2qpxvBmDmhm-eIFBZT/preview",
+    // "https://drive.google.com/file/d/1PUvKjhsHS06wRZZx2XTHsgZG8_X0fMtY/preview",
+    // "https://drive.google.com/file/d/1CMuCz5LVSp0tgqGaLFwvTlYg1YQ8tScS/preview",
+    // "https://drive.google.com/file/d/1PHu-vnK23ZN6ifAK95j83yIlCj0jCXH5/preview",
+    // "https://drive.google.com/file/d/1x3z-oEsK-GCR5XXeLNb89qpwdubm8K3O/preview",
+    // "https://drive.google.com/file/d/1xnjP6VZoC2ql3D9WVAPL1MRpOTk-ngQE/preview",
+    // "https://drive.google.com/file/d/1L1rZvp7MrBwH3oyDRja36rmS-UNfLu8N/preview"
 ];
 
 function randomImg () {
