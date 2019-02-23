@@ -35,6 +35,7 @@ class App extends React.Component{
 
     resize(){//adjust the number of recomendations shown bassed on the width avalible
         this.setState({tilesPerRow : Math.floor(document.getElementById('recs').offsetWidth / 154)});
+        this.resize();
     }
 
     render(){
