@@ -18,7 +18,7 @@ class Tile extends React.Component {
         //https://drive.google.com/open?id=1X9f8NovT68ABI2aQg5L5KnBG7Cw3kJm2
         return(
         <div className='tile' width='320px'>
-            <iframe className='recImage' src={this.props.thing.imageUrl} width='150px'/>
+            <img className='recImage' src={this.props.thing.imageUrl} height='150px' width='150px'/>
             <div className='recName'>{this.props.thing.name}</div>
             <div className='stars'>{starBar}   {this.props.thing.stars}</div>
             <div><span className='recPrice'>${this.props.thing.price}</span><span>{(this.props.thing.prime) ? ""
