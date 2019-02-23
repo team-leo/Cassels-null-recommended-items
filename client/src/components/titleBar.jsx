@@ -9,7 +9,7 @@ class TitleBar extends React.Component {
     render(){
         return(
         <div style={{height: '28px'}}>
-        <div style={{float: 'right'}}>
+        <div style={{float: 'left'}}>
             <span>{this.props.rowName} | </span>
             <span>page {Math.ceil((this.props.currentPage + 0.01)/(this.props.tilesPerRow))}{' of '}
             {Math.ceil(this.props.thingCount / this.props.tilesPerRow)}   </span>{/*magic algebra. if you need to change this, good luck*/}
