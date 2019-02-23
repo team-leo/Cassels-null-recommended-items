@@ -10,7 +10,7 @@ div {
 .row {
     border-style: solid;
     border-width: 3px;
-    border-color: rgb(209, 44, 44);
+    border-color: white;
     /* background-color: whitesmoke; */
     height: 230px;
 }
