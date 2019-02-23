@@ -68,8 +68,8 @@ class App extends React.Component{
     // }
 
     changePage(change){
-        var srch = new URLSearchParams(window.location.search);
-        console.log(srch.get('id'));
+        //var srch = new URLSearchParams(window.location.search);
+        //console.log(srch.get('id'));
         if(((this.state.currentPage + change) > 0) && (this.state.currentPage < (this.state.things.length  - (this.state.tilesPerRow) ))){
             // var newPage = (this.state.currentPage + change);
             // console.log('scrolling to '+ newPage +'was attempted');
@@ -81,7 +81,7 @@ class App extends React.Component{
                 this.setState({currentPage : (this.state.currentPage + (change*this.state.tilesPerRow))});
             }
         } else {
-            console.log('scrolling to 0 was attempted');
+            //console.log('scrolling to 0 was attempted');
             this.setState({currentPage : 0});
         }
     }
