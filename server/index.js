@@ -4,7 +4,6 @@ const axios = require('axios');
 const path = require('path');
 var models = require('./models');
 var controllers = require('./controllers');
-// var page = require('../client/dist/index.html');
 var app = express();
 
 
@@ -15,9 +14,6 @@ app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     next();
   });
-//app.use(bodyParser.urlencoded());
-//app.use(express.static('../client/src/index.html'));
-// app.get('/y', require('../client/dist/index.html'));
 
 app.get('/api/recs', controllers.fetchBundle)
 app.get('/t', controllers.fetchItems);

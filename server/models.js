@@ -4,21 +4,19 @@ var db = require('../db/index.js');
 
 function fetchItems(cb, id){
     var search = (id || (Math.random()*100))*4; //decide what item to look up, pick randomly if none is provided
-    if(search > 399){search = 399} //set max item id to 399
     var output = [];
     var querry = ('SELECT * FROM merch WHERE id > '+search
-    +' AND id < '+(search+60))
+    +' AND id < '+(search+60)) //what type/how many recomendations
     db.each(querry, (err, row)=>{
         if(err){
             console.log('ERROR after querry: '+err);
         } else{
             output.push(row);
         }
-    }, ()=>{cb(output)});
+    }, ()=>{cb(output)});//send request data to client
 }
 
 function fetchBundle(cb){
-    // var bundle = require('../client/dist/bundle.js');
     return cb(path.resolve(__dirname,'../client/dist/bundle.js'));
 }
 
