@@ -24,3 +24,5 @@ coverage
 build/
 bundle.js
 
+# Config file
+config.js
