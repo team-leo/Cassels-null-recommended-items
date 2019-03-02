@@ -5,10 +5,10 @@ const faker = require('faker');
 const {performance} = require('perf_hooks');
 
 // const productInfoFile = path.join(__dirname, `../neo4j-community-3.5.3/import/products${csvNum}.csv`);
-const productOutput = [];
+
 
 // const connectionList = path.join(__dirname, `../neo4j-community-3.5.3/import/connections${csvNum}.csv`);
-const connections = [];
+
 
 function randomImg () {
 let imgLinks = [
@@ -35,9 +35,11 @@ let imgLinks = [
 
 let csvNum = 1;
 let start = 1;
-let end = 1001
+let end = 10001;
 
-for (let n = 0; n < 100; n++) {
+for (let n = 1; n < 1000; n++) {
+    const productOutput = [];
+    const connections = [];
     for (let i = start; i < end; i++) {
         let name = faker.commerce.productName();
         let stars = Math.ceil((Math.random()*10))/2;
@@ -46,8 +48,6 @@ for (let n = 0; n < 100; n++) {
         let imageUrl = randomImg();
         let prime = Math.round(Math.random());
         const row = [];
-        let num = Math.floor(Math.random() * 300);
-        
         row.push(i);
         row.push(name);
         row.push(stars);
@@ -55,26 +55,27 @@ for (let n = 0; n < 100; n++) {
         row.push(price);
         row.push(imageUrl);
         row.push(prime);    
-        for (let j = 1; j < num; j++) {
-            let related = (Math.ceil(Math.random() * end) + start)
-            if (related !== i && !row.includes(related)) {
-                row.push(related);
-            }
-        }
         productOutput.push(row);
     }
 
-    // for (let j = start; j < end; j++) {
-    //     const row = [];
-    //     row.push(j);
-    //     connections.push(row);
-    // }
+    for (let j = start; j < end; j++) {
+        const row = [];
+        let num = Math.floor(Math.random() * 300);
+        row.push(j);
+        for (let k = 1; k < num; k++) {
+            let related = Math.ceil(Math.random() * (end - start) + start);
+            if (related !== j && !row.includes(related)) {
+                row.push(related);
+            }
+        }
+        connections.push(row);
+    }
 
     fs.writeFileSync(path.join(__dirname, `../neo4j-community-3.5.3/import/products${csvNum}.csv`), productOutput.join(os.EOL));
-    // fs.writeFileSync(path.join(__dirname, `../neo4j-community-3.5.3/import/connections${csvNum}.csv`), connections.join(os.EOL));
+    fs.writeFileSync(path.join(__dirname, `../neo4j-community-3.5.3/import/connections${csvNum}.csv`), connections.join(os.EOL));
 
-    start = start + 1000;
-    end = end + 1000;
+    start = start + 10000;
+    end = end + 10000;
     csvNum = csvNum + 1;
 }
 console.log('performance: ', performance.now());
