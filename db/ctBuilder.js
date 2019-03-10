@@ -5,16 +5,16 @@ const path = require('path');
 
 // console.log(client);
 
-client.connectionParameters.database = 'mydb';
-client.database = 'mydb';
+client.connectionParameters.database = 'productsdb';
+client.database = 'productsdb';
 
 
 // console.log(client);
 
 client.connect();
 
-client.query(`COPY connections(product_id,rec_id)
-    FROM '${path.join(__dirname, '/csv/pg-connections.csv')}' DELIMITER ',' CSV HEADER`, (err, res) => {
+client.query(`COPY recommendations(rec1,rec2,rec3,rec4,rec5,rec6)
+    FROM '${path.join(__dirname, '/csv/connections.csv')}' DELIMITER ',' CSV HEADER`, (err, res) => {
         console.log(err ? err.stack : console.log('Copied CSV file successfully!'));
     client.end();
 });
