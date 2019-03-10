@@ -13,10 +13,10 @@ function ReadAppend(file, appendFile){
         });
     });
 };
-const productList = path.join(__dirname, `./csv/products.csv`);
+const productList = path.join(__dirname, `../neo4j-community-3.5.3/import/products-header.csv`);
 
 for (let n = 1; n < 1001; n++) {
-    let productBatch = path.join(__dirname, `./csv/products${n}.csv`);
+    let productBatch = path.join(__dirname, `../neo4j-community-3.5.3/import/products${n}.csv`);
     ReadAppend(productList, productBatch)
     if (n === 1000) {
         console.log('performance: ', performance.now());
