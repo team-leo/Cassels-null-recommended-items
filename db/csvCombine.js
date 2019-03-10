@@ -13,7 +13,7 @@ function ReadAppend(file, appendFile){
         });
     });
 };
-const productList = path.join(__dirname, `../neo4j-community-3.5.3/import/products-header.csv`);
+const productList = path.join(__dirname, `../neo4j-community-3.5.3/import/product-header.csv`);
 
 for (let n = 1; n < 1001; n++) {
     let productBatch = path.join(__dirname, `../neo4j-community-3.5.3/import/products${n}.csv`);
