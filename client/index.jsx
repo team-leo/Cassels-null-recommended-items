@@ -61,7 +61,7 @@ class App extends React.Component{
     }
 
     update(){//is run on component mount, gets recomendation data from server database
-        axios.get('http://ec2-3-91-242-160.compute-1.amazonaws.com:3000/t?id=' + (this.props.id || 0))
+        axios.get('http://localhost:3000/t?id=' + (this.props.id || 0))
         .then((result)=>{
             this.setState({things : result.data})
         })
