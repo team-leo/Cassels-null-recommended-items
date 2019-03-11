@@ -13,12 +13,18 @@ class Row extends React.Component {
 
     render(){
         var onScrn = this.props.things.slice(this.props.page, Math.floor(this.props.page+Math.floor(this.props.tilesPerRow)));
+        if (Array.isArray(onScrn) && onScrn.length > 2) {
+            return(
+            <div className='row'>
+                {onScrn.map((thing)=>{
+                    return(<Tile thing={thing._fields[0].properties} id={thing._fields[0].properties.id} prime={thing._fields[0].properties.prime.low} />)
+                })}
+            </div>)
+        }
         return(
-        <div className='row'>
-            {onScrn.map((thing)=>{
-                return(<Tile thing={thing} />)
-            })}
-        </div>)
+            <div className='row'>
+                <Tile thing={this.props.things} />
+            </div>)
     }
 }
 

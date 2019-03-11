@@ -1,19 +1,25 @@
-const sqlite = require('sqlite3').verbose();
-const path = require('path');
-var db = require('../db/index.js');
+const neo4j = require('neo4j-driver').v1;
+const driver = neo4j.driver("bolt://localhost", neo4j.auth.basic("neo4j", "neo4j"));
+const session = driver.session();
+const {performance} = require('perf_hooks');
 
-function fetchItems(cb, id){
-    var search = (id || (Math.random()*100))*4; //decide what item to look up, pick randomly if none is provided
-    var output = [];
-    var querry = ('SELECT * FROM merch WHERE id > '+search
-    +' AND id < '+(search+60)) //what type/how many recomendations
-    db.each(querry, (err, row)=>{
-        if(err){
-            console.log('ERROR after querry: '+err);
-        } else{
-            output.push(row);
+function fetchItems(id){
+    result = [];
+    session
+    .run(`MATCH (n:Product {id: "${id}"})--(c) RETURN c`)
+    .subscribe({
+        onNext: function (record) {
+            console.log(record.get('c'));
+            result.push(record.get('c'));
+        },
+        onCompleted: function() {
+            session.close();
+        },
+        onError: function (error) {
+            console.log(error)
         }
-    }, ()=>{cb(output)});//send request data to client
+    });
+    return result;
 }
 
 function fetchBundle(cb){

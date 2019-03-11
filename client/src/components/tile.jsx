@@ -16,11 +16,11 @@ class Tile extends React.Component {
         }
         
         return(
-        <div className='tile' width='320px'>
+        <div className='tile' key={this.props.thing.id} width='320px'>
             <img className='recImage' src={this.props.thing.imageUrl} height='150px' width='150px'/>
             <div className='recName'>{this.props.thing.name}</div>
             <div className='stars'>{starBar}   {this.props.thing.stars}</div>
-            <div><span className='recPrice'>${this.props.thing.price}</span><span>{(this.props.thing.prime) ? ""
+            <div><span className='recPrice'>${this.props.thing.price}</span><span>{(!this.props.prime) ? ""
             :(<span className='isPrime'> <span className='primeTick'>✔</span><span className='primeWord'>prime</span> </span>)}</span></div>
         </div>)
     }

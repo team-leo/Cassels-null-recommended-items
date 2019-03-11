@@ -30,7 +30,7 @@ class App extends React.Component{
     }
 
     componentDidMount(){
-        this.update();//update state.things with recomendations from database
+        this.getItemByUrl();//update state.things with recomendations from database
         this.resize();
     }
 
@@ -61,17 +61,25 @@ class App extends React.Component{
     }
 
     update(){//is run on component mount, gets recomendation data from server database
-        axios.get('http://localhost:3000/t?id=' + (this.props.id || 0))
+        axios.get('http://localhost:3000/api/recommendations/' + (this.state.itemId || 1))
         .then((result)=>{
-            this.setState({things : result.data})
+            console.log('result is: ', result.data.results);
+            this.setState({things : result.data.results})
         })
         .catch((err)=>{console.log('ERROR after get request: '+err)});
     }
+
+    getItemByUrl() {
+        let item = window.location.href.split('/')[3] || 1;
+        this.setState({itemId: item}, () => {
+            this.update();
+        });
+    }
 }
 
-function getItemId(){//get item id and render component
-    var srch = new URLSearchParams(window.location.search);//read the 'id' property of the url query string, and pass it to the component as props
-    return srch.get('id')}
+// function getItemId(){//get item id and render component
+//     var srch = new URLSearchParams(window.location.search);//read the 'id' property of the url query string, and pass it to the component as props
+//     return srch.get('id')}
 
 
-ReactDOM.render(<App id={getItemId()}/>, document.getElementById('recs'));//render element
+ReactDOM.render(<App />, document.getElementById('recs'));//render element
