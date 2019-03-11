@@ -60,6 +60,7 @@ module.exports = {
     proxy: {
       "/api": "http://3.17.185.179:3000"
     },
+    host: '3.17.185.179',
     port: process.env.PORT || PORT,
     compress: true, // compress bundle in memory for faster loads during development
     contentBase: path.join(__dirname, './public'), // the base directory to start the application from
