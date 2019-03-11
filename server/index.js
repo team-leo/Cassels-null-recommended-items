@@ -26,10 +26,8 @@ app.get('/:itemId', (req, res) => {
 })
 // app.get('/t', controllers.fetchItems);
 app.get('/api/recommendations/:itemId', (req, res) => {
-  console.log(req.params.itemId);
   session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
     .then(result => {
-      console.log(result)
       const rec = result.records;
       res.send({results: rec});
     })
