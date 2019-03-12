@@ -58,7 +58,7 @@ module.exports = {
   target: 'web',
   devServer: {
     proxy: {
-      "/api": "http://localhost:3000"
+      "/api": "http://3.17.185.179:3000"
     },
     port: process.env.PORT || PORT,
     compress: true, // compress bundle in memory for faster loads during development
