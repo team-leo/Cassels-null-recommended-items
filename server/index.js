@@ -20,7 +20,7 @@ app.use(function(req, res, next) {
   });
 
 
-
+app.get('/api/recs', controllers.fetchBundle)
 app.get('/:itemId', (req, res) => {
     res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
 })
