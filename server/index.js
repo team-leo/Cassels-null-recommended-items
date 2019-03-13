@@ -24,7 +24,7 @@ app.get('/api/recs', controllers.fetchBundle)
 app.get('/:itemId', (req, res) => {
     res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
 })
-// app.get('/t', controllers.fetchItems);
+
 app.get('/api/recommendations/:itemId', (req, res) => {
   session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
     .then(result => {
@@ -38,24 +38,10 @@ app.get('/api/recommendations/:itemId', (req, res) => {
       return session.close();
     })
 })
-// function fetchItems(id){
-//   result = [];
-//   session
-//   .run(`MATCH (n:Product {id: "${id}"})--(c) RETURN c`)
-//   .then({
-//       onNext: function (record) {
-//           console.log(record.get('c'));
-//           result.push(record.get('c'));
-//       },
-//       onCompleted: function() {
-//           session.close();
-//       },
-//       onError: function (error) {
-//           console.log(error)
-//       }
-//   });
-//   return result;
-// }
+
+app.get("/loaderio-*", (req, res) => {
+  res.sendfile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
+});
 
 
 app.listen(3000, ()=>{
