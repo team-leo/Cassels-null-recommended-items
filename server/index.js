@@ -26,6 +26,10 @@ app.get('/:itemId', (req, res) => {
 })
 
 app.get('/api/recommendations/:itemId', (req, res) => {
+  if (typeof req.params.itemId === "string" && req.params.itemId.includes('loader')) {
+  res.sendfile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
+  }
+
   session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
     .then(result => {
       const rec = result.records;
@@ -39,9 +43,9 @@ app.get('/api/recommendations/:itemId', (req, res) => {
     })
 })
 
-app.get("/loaderio-*", (req, res) => {
-  res.sendfile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
-});
+// app.get("/loaderio-*", (req, res) => {
+//   res.sendfile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
+// });
 
 
 app.listen(3000, ()=>{
