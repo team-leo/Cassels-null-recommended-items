@@ -61,11 +61,21 @@ class App extends React.Component{
     }
 
     update(){//is run on component mount, gets recomendation data from server database
-        axios.get('http://3.17.185.179/api/recommendations/' + (this.state.itemId || 1))
-        .then((result)=>{
-            this.setState({things : result.data.results})
-        })
-        .catch((err)=>{console.log('ERROR after get request: '+err)});
+        if (typeof this.state.itemId === "string" && this.state.itemId.includes("loaderio-d559109a5adcea2b4673a49a6126c054")) {
+            axios.get('http://3.17.185.179/loaderio-*')
+                .then(() => {
+                    console.log('loader.io')
+                })
+                .catch((err)=> {
+                    console.log(err)
+                })
+        } else {
+            axios.get('http://3.17.185.179/api/recommendations/' + (this.state.itemId || 1))
+                .then((result)=>{
+                    this.setState({things : result.data.results})
+                })
+                .catch((err)=>{console.log('ERROR after get request: '+err)});
+        }
     }
 
     getItemByUrl() {
