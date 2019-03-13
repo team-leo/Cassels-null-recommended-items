@@ -25,11 +25,11 @@ app.get('/:itemId', (req, res) => {
     res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
 })
 
-app.get('/api/recommendations/:itemId', (req, res) => {
-  if (typeof req.params.itemId === "string" && req.params.itemId.includes('loader')) {
+app.get("/loaderio-*", (req, res) => {
   res.sendfile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
-  }
+});
 
+app.get('/api/recommendations/:itemId', (req, res) => {
   session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
     .then(result => {
       const rec = result.records;
@@ -42,11 +42,6 @@ app.get('/api/recommendations/:itemId', (req, res) => {
       return session.close();
     })
 })
-
-// app.get("/loaderio-*", (req, res) => {
-//   res.sendfile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
-// });
-
 
 app.listen(3000, ()=>{
     console.log('listening on port 3000')
