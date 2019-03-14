@@ -5,6 +5,7 @@ const path = require('path');
 var models = require('./models');
 var controllers = require('./controllers');
 var app = express();
+const compression = require('compression');
 
 const neo4j = require('neo4j-driver').v1;
 const driver = neo4j.driver("bolt://18.191.246.44", neo4j.auth.basic("neo4j", "neo4j"));
@@ -19,6 +20,11 @@ app.use(function(req, res, next) {
     next();
   });
 
+app.get('*.js', function (req, res, next) {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
 
 app.get('/api/recs', controllers.fetchBundle)
 app.get('/:itemId', (req, res) => {
@@ -30,7 +36,7 @@ app.get('/:itemId', (req, res) => {
 })
 
 app.get("/loaderio-*", (req, res) => {
-  res.sendfile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
+  res.sendFile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
 });
 
 app.get('/api/recommendations/:itemId', (req, res) => {

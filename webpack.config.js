@@ -50,6 +50,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new CompressionPlugin()
+  ],
   resolve: {
     modules: ['node_modules', `${SRC_DIR}`], // directories to look for modules when importing (including the SRC_DIR allows you to import files relative to 'src' -- no need to '../../../component' !!) 
     extensions: ['.js', '.jsx', '.scss', '.css', '.js', '.json'],
