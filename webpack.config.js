@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const SRC_DIR = path.join(__dirname, './client');
 const PORT = 8000;
+var CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
   mode: 'development',
