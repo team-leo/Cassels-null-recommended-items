@@ -15,6 +15,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "compression-webpack-plugin": "^2.0.0",
     "css-loader": "^2.1.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
