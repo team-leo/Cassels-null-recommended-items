@@ -11,7 +11,7 @@ const redisUrl = 'redis://localhost:6379';
 const client = redis.createClient(redisUrl);
 
 const neo4j = require('neo4j-driver').v1;
-const driver = neo4j.driver("bolt://18.219.226.194", neo4j.auth.basic("neo4j", "neo4j"));
+const driver = neo4j.driver("bolt://18.191.101.154", neo4j.auth.basic("neo4j", "neo4j"));
 const session = driver.session();
 const {performance} = require('perf_hooks');
 
