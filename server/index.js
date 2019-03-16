@@ -25,7 +25,6 @@ app.use(function(req, res, next) {
 
 client.on('connect', () => {
   console.log('redis is connected');
-  console.log(client.get('test'));
 })
 client.on('error', (err) => {
   console.error('Could not connect to redis: ', err);
@@ -65,12 +64,12 @@ app.get("/loaderio-*", (req, res) => {
 // })
 
 app.get('/api/recommendations/:itemId', (req, res) => {
-  client.get(req.params.itemId), (err, val) => {
-    if (val !== null) {
-      console.log('Serving from redis');
-      res.send(val);
-    } else if (val === null) {
-      console.log('Item not found on redis');
+  client.get(req.params.itemId, (err, val) => {
+    if (err) throw err;
+    if (val) return res.send({results: val});
+    
+    console.log('Item not found on redis');
+    
     session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
       .then(result => {
         console.log('Serving from Neo4j');
@@ -84,8 +83,7 @@ app.get('/api/recommendations/:itemId', (req, res) => {
       .then(() => {
         return session.close();
       })
-    }
-  }
+  })
 })
 
 app.listen(3000, ()=>{
