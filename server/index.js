@@ -66,7 +66,7 @@ app.get("/loaderio-*", (req, res) => {
 app.get('/api/recommendations/:itemId', (req, res) => {
   client.get(req.params.itemId, (err, val) => {
     if (err) throw err;
-    if (val) return res.send({results: val});
+    if (val) return res.send({results: JSON.parse(val)});
     
     console.log('Item not found on redis');
     
