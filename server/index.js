@@ -7,8 +7,8 @@ var controllers = require('./controllers');
 var app = express();
 const compression = require('compression');
 const redis = require('redis');
-const redisUrl = 'redis://localhost:6379';
-const client = redis.createClient();
+const redisUrl = 'redis://3.17.185.179:6379';
+const client = redis.createClient(redisUrl);
 
 const neo4j = require('neo4j-driver').v1;
 const driver = neo4j.driver("bolt://18.191.101.154", neo4j.auth.basic("neo4j", "neo4j"));
@@ -68,11 +68,8 @@ app.get('/api/recommendations/:itemId', (req, res) => {
     if (err) throw err;
     if (val) return res.send({results: JSON.parse(val)});
     
-    console.log('Item not found on redis');
-    
     session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
       .then(result => {
-        console.log('Serving from Neo4j');
         const rec = result.records;
         client.set(req.params.itemId, JSON.stringify(rec));
         res.send({results: rec});
