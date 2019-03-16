@@ -42,19 +42,19 @@ app.get("/loaderio-*", (req, res) => {
   res.sendFile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
 });
 
-app.get('/api/recommendations/:itemId', (req, res) => {
-  session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
-    .then(result => {
-      const rec = result.records;
-      res.send({results: rec});
-    })
-    .catch(e => {
-      res.status(500).send(e);
-    })
-    .then(() => {
-      return session.close();
-    })
-})
+// app.get('/api/recommendations/:itemId', (req, res) => {
+//   session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
+//     .then(result => {
+//       const rec = result.records;
+//       res.send({results: rec});
+//     })
+//     .catch(e => {
+//       res.status(500).send(e);
+//     })
+//     .then(() => {
+//       return session.close();
+//     })
+// })
 
 app.get('/api/recommendations/:itemId', (req, res) => {
   client.get(req.params.itemId), (err, val) => {
