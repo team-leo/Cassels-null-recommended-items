@@ -6,6 +6,9 @@ var models = require('./models');
 var controllers = require('./controllers');
 var app = express();
 const compression = require('compression');
+const redis = require('redis');
+const redisUrl = 'redis://localhost:6379';
+const client = redis.createClient(redisUrl);
 
 const neo4j = require('neo4j-driver').v1;
 const driver = neo4j.driver("bolt://18.219.226.194", neo4j.auth.basic("neo4j", "neo4j"));
@@ -51,6 +54,30 @@ app.get('/api/recommendations/:itemId', (req, res) => {
     .then(() => {
       return session.close();
     })
+})
+
+app.get('/api/recommendations/:itemId', (req, res) => {
+  client.get(req.params.itemId), (err, val) => {
+    if (val !== null) {
+      console.log('Serving from redis');
+      res.send(val);
+    } else if (val === null) {
+      console.log
+    session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
+      .then(result => {
+        console.log('Serving from Neo4j');
+        const rec = result.records;
+        client.set(req.params.itemId, JSON.stringify(rec));
+        res.send({results: rec});
+      })
+      .catch(e => {
+        res.status(500).send(e);
+      })
+      .then(() => {
+        return session.close();
+      })
+    }
+  }
 })
 
 app.listen(3000, ()=>{
