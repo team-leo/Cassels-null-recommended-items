@@ -25,7 +25,7 @@ app.use(function(req, res, next) {
 
 client.on('connect', () => {
   console.log('redis is connected');
-  console.log(client.get(test));
+  console.log(client.get('test'));
 })
 client.on('error', (err) => {
   console.error('Could not connect to redis: ', err);
