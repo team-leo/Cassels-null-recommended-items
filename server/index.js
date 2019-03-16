@@ -81,5 +81,6 @@ app.get('/api/recommendations/:itemId', (req, res) => {
 })
 
 app.listen(3000, ()=>{
+    client.flushall();
     console.log('listening on port 3000')
 })
