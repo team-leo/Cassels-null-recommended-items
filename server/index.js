@@ -16,6 +16,7 @@ const session = driver.session();
 const {performance} = require('perf_hooks');
 
 app.use(bodyParser.json());
+app.use(compression());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -39,7 +40,7 @@ app.get('*.js', function (req, res, next) {
 app.get('/api/recs', controllers.fetchBundle)
 app.get('/:itemId', (req, res) => {
   if (req.params.itemId.includes('loaderio')) {
-  res.sendfile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
+  res.sendFile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
   } else {
     res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
   }
