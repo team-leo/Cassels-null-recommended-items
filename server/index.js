@@ -83,7 +83,6 @@ if (cluster.isMaster) {
     session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
     .then(result => {
       const rec = result.records;
-      client.set(req.params.itemId, JSON.stringify(rec));
       res.send({results: rec});
     })
     .catch(e => {
@@ -96,7 +95,6 @@ if (cluster.isMaster) {
 
 
   app.listen(3000, ()=>{
-      client.flushall();
       console.log('listening on port 3000')
   })
 }
