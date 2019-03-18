@@ -13,7 +13,7 @@ const compression = require('compression');
 
 const neo4j = require('neo4j-driver').v1;
 const driver = neo4j.driver("bolt://18.191.101.154", neo4j.auth.basic("neo4j", "neo4j"));
-const session = driver.session();
+const session = driver.session(neo4j.session.READ);
 const {performance} = require('perf_hooks');
 
 app.use(bodyParser.json());
@@ -57,7 +57,8 @@ if (cluster.isMaster) {
   })
 
   app.get("/loaderio-*", (req, res) => {
-    res.sendFile(path.join(__dirname, '../loaderio-d559109a5adcea2b4673a49a6126c054.txt'));
+    res.sendFile(path.join(__dirname, '../loaderio-8b0815e94855c254692cfb0676102070
+.txt'));
   });
 
   app.get('/api/recommendations/:itemId', (req, res) => {
