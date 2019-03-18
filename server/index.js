@@ -61,24 +61,39 @@ if (cluster.isMaster) {
   });
 
   app.get('/api/recommendations/:itemId', (req, res) => {
-    client.get(req.params.itemId, (err, val) => {
-      if (err) throw err;
-      if (val) return res.send({results: JSON.parse(val)});
+    // client.get(req.params.itemId, (err, val) => {
+    //   if (err) throw err;
+    //   if (val) return res.send({results: JSON.parse(val)});
       
-      session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
-        .then(result => {
-          const rec = result.records;
-          client.set(req.params.itemId, JSON.stringify(rec));
-          res.send({results: rec});
-        })
-        .catch(e => {
-          res.status(500).send(e);
-        })
-        .then(() => {
-          return session.close();
-        })
+    //   session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
+    //     .then(result => {
+    //       const rec = result.records;
+    //       client.set(req.params.itemId, JSON.stringify(rec));
+    //       res.send({results: rec});
+    //     })
+    //     .catch(e => {
+    //       res.status(500).send(e);
+    //     })
+    //     .then(() => {
+    //       return session.close();
+    //     })
+    // })
+  
+  
+    session.run(`MATCH (n:Product {id: "${req.params.itemId}"})--(c) RETURN c`)
+    .then(result => {
+      const rec = result.records;
+      client.set(req.params.itemId, JSON.stringify(rec));
+      res.send({results: rec});
+    })
+    .catch(e => {
+      res.status(500).send(e);
+    })
+    .then(() => {
+      return session.close();
     })
   })
+
 
   app.listen(3000, ()=>{
       client.flushall();
