@@ -62,7 +62,7 @@ class App extends React.Component{
 
     update(){//is run on component mount, gets recomendation data from server database
         if (typeof this.state.itemId === "string" && this.state.itemId.includes("loaderio")) {
-            axios.get('http://3.17.185.179/loaderio-*')
+            axios.get('/loaderio-*')
                 .then(() => {
                     console.log('loader.io')
                 })
@@ -70,7 +70,7 @@ class App extends React.Component{
                     console.log(err)
                 })
         } else {
-            axios.get('http://3.17.185.179/api/recommendations/' + (this.state.itemId || 1))
+            axios.get('api/recommendations/' + (this.state.itemId || 1))
             .then((result)=>{
                 this.setState({things : result.data.results})
             })
