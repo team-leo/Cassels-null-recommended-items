@@ -57,8 +57,7 @@ if (cluster.isMaster) {
   })
 
   app.get("/loaderio-*", (req, res) => {
-    res.sendFile(path.join(__dirname, '../loaderio-8b0815e94855c254692cfb0676102070
-.txt'));
+    res.sendFile(path.join(__dirname, '../loaderio-8b0815e94855c254692cfb0676102070.txt'));
   });
 
   app.get('/api/recommendations/:itemId', (req, res) => {
