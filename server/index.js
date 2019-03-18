@@ -7,9 +7,9 @@ var controllers = require('./controllers');
 var app = express();
 const cluster = require('cluster');
 const compression = require('compression');
-const redis = require('redis');
-const redisUrl = 'redis://3.17.185.179:6379';
-const client = redis.createClient(redisUrl);
+// const redis = require('redis');
+// const redisUrl = 'redis://3.17.185.179:6379';
+// const client = redis.createClient(redisUrl);
 
 const neo4j = require('neo4j-driver').v1;
 const driver = neo4j.driver("bolt://18.191.101.154", neo4j.auth.basic("neo4j", "neo4j"));
@@ -34,12 +34,12 @@ if (cluster.isMaster) {
     cluster.fork();
   })
 } else {
-  client.on('connect', () => {
-    console.log('redis is connected');
-  })
-  client.on('error', (err) => {
-    console.error('Could not connect to redis: ', err);
-  })
+  // client.on('connect', () => {
+  //   console.log('redis is connected');
+  // })
+  // client.on('error', (err) => {
+  //   console.error('Could not connect to redis: ', err);
+  // })
 
   app.get('*.js', function (req, res, next) {
     req.url = req.url + '.gz';
